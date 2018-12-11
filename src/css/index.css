@@ -1,0 +1,22 @@
+webview{
+    width: 100%;
+    height: 100%;
+}
+
+.fas{
+    cursor: pointer;
+    color:#003171;
+}
+
+.fas:hover {
+    color: #ff4757;
+    font-size: 1.33em;
+    vertical-align: -25%;
+}
+
+.fas:active{
+
+    color: #26de81;
+    font-weight: bolder;
+    
+}

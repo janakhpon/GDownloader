@@ -1,0 +1,93 @@
+{
+    "name": "gdownloader",
+    "productName": "GDownloader",
+    "version": "2.0.0",
+    "description": "GDownloader",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds --darwinDarkModeSupport=true",
+        "package-win": "electron-packager . Gdownloader --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"GT YOUTUBE DOWNLOADER\"",
+        "package-linux": "electron-packager . Gdownloader --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
+        "create-installer-mac": "electron-installer-dmg ./release-builds/Gdownloader-darwin-x64/Electron\\ tutorial\\ app.app Gdownloader --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
+        "create-installer-win": "node installers/windows/createinstaller.js",
+        "create-debian-installer": "electron-installer-debian --src release-builds/Gdownloader-linux-x64/ --arch amd64 --config debian.json",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "eslint src --color"
+    },
+    "keywords": [],
+    "author": "janakhpon",
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "make_targets": {
+                "win32": [
+                    "squirrel"
+                ],
+                "darwin": [
+                    "zip"
+                ],
+                "linux": [
+                    "deb",
+                    "rpm"
+                ]
+            },
+            "electronPackagerConfig": {
+                "packageManager": "npm",
+                "icon": "/assets/icons/png/1024x1024.png",
+                "ignore": [
+                    ".idea",
+                    "coverage"
+                ]
+            },
+            "electronWinstallerConfig": {
+                "name": "yt_downloader"
+            },
+            "electronInstallerDebian": {
+                "name": "test",
+                "iconUrl": "/assets/icons/png/64x64.png",
+                "setupIcon": "/assets/icons/png/64x64.png"
+            },
+            "electronInstallerRedhat": {},
+            "github_repository": {
+                "owner": "",
+                "name": ""
+            },
+            "windowsStoreConfig": {
+                "packageName": "",
+                "name": "ytdownloader",
+                "icon": "/assets/icons/png/64x64.png",
+                "ignore": [
+                    ".idea",
+                    "coverage"
+                ]
+            }
+        }
+    },
+    "dependencies": {
+        "electron-compile": "^6.4.2",
+        "electron-squirrel-startup": "^1.0.0",
+        "youtube-dl": "^1.12.2"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "electron-forge": "^4.1.2",
+        "electron-installer-debian": "^1.0.0",
+        "electron-packager": "^13.0.0",
+        "electron-prebuilt-compile": "1.7.9",
+        "electron-winstaller": "^2.7.0",
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb": "^15.1.0",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.4.0",
+        "fluent-ffmpeg": "^2.1.2",
+        "fs": "0.0.1-security",
+        "readline": "^1.3.0",
+        "ytdl-core": "^0.28.1"
+    }
+}
